@@ -27,11 +27,11 @@ services:
     volumes:
       - chroma_data:/chroma/chroma
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:8000/api/v2/heartbeat || exit 1"]
+      test: ["CMD-SHELL", "perl -e 'use IO::Socket::INET; exit !(IO::Socket::INET->new(PeerAddr => \"127.0.0.1\", PeerPort => 8000, Timeout => 2));' || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 5
-      start_period: 10s
+      start_period: 5s
     restart: unless-stopped
 
 volumes:
