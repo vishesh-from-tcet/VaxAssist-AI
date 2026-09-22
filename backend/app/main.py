@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from app.db.mongo import mongo_db
 from app.api.health import router as health_router
+from app.api.v1.auth import router as auth_router
 
 logging.basicConfig(
     level=logging.INFO if settings.DEBUG else logging.WARNING,
@@ -18,6 +19,7 @@ logger = logging.getLogger("vaxassist")
 async def lifespan(app: FastAPI):
     logger.info("Initializing VaxAssist AI Backend Foundation...")
     mongo_db.connect()
+    await mongo_db.init_db()
     yield
     logger.info("Shutting down VaxAssist AI Backend...")
     mongo_db.close()
@@ -42,6 +44,9 @@ app.add_middleware(
 # Register Routers
 app.include_router(health_router)
 app.include_router(health_router, prefix="/api/v1")
+app.include_router(auth_router, prefix="/api/v1")
+app.include_router(auth_router)
+
 
 
 @app.get("/")

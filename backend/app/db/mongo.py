@@ -14,10 +14,20 @@ class MongoDBManager:
         self.client = AsyncIOMotorClient(settings.MONGODB_URL, serverSelectionTimeoutMS=3000)
         self.db = self.client[settings.MONGODB_DB_NAME]
 
+    async def init_db(self):
+        """Initialize indexes for MongoDB collections."""
+        if self.db is not None:
+            try:
+                await self.db.users.create_index("email", unique=True)
+                logger.info("MongoDB unique index on users.email ensured.")
+            except Exception as e:
+                logger.warning(f"Could not create MongoDB indexes: {e}")
+
     def close(self):
         if self.client:
             self.client.close()
             logger.info("MongoDB connection closed.")
+
 
 mongo_db = MongoDBManager()
 

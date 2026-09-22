@@ -22,6 +22,11 @@ class Settings(BaseSettings):
     GEMINI_API_KEY: str = ""
     GEMINI_MODEL: str = "gemini-1.5-flash"
 
+    JWT_SECRET_KEY: str = "vaxassist_secret_key_development_only_2026"
+    JWT_ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 1440
+
+
     model_config = SettingsConfigDict(
         env_file="../.env",
         env_file_encoding="utf-8",
