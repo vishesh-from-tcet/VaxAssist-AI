@@ -1,0 +1,19 @@
+Title: Quick Immunization Facts and Safety Principles (DEMO)
+Organization: World Health Organization & CDC (DEMO)
+Source: WHO Vaccine Information Resource & Public Health Factsheet (DEMO)
+Publication Date: 2024-01-01
+Country / Region: GLOBAL
+Topic: General Vaccine FAQs
+Version: v1.0.0-demo
+
+[SECTION: Overview]
+Vaccines save an estimated 3.5 to 5 million lives each year from diseases like diphtheria, tetanus, pertussis, influenza, and measles.
+Immunization is a key component of primary health care and an undisputed human right.
+
+[SECTION: Multiple Vaccines at Same Visit]
+Scientific evidence shows that giving multiple vaccines at the same visit does not overload a child's immune system.
+A child is exposed to hundreds of environmental antigens every day. Receiving combined vaccines (like Pentavalent or MMR) reduces clinic visits and ensures timely protection.
+
+[SECTION: Natural Immunity vs Vaccine Immunity]
+While natural infection often produces immunity, the price paid for that natural immunity can be catastrophic, including permanent paralysis from polio, cognitive disability from rubella, liver failure from Hepatitis B, or death from measles complications.
+Vaccines safely stimulate immunity without causing the disease or its severe complications.

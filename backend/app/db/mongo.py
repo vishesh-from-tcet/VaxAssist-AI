@@ -19,7 +19,11 @@ class MongoDBManager:
         if self.db is not None:
             try:
                 await self.db.users.create_index("email", unique=True)
-                logger.info("MongoDB unique index on users.email ensured.")
+                await self.db.families.create_index("user_id")
+                await self.db.members.create_index([("family_id", 1), ("user_id", 1)])
+                await self.db.vaccinations.create_index([("user_id", 1), ("member_id", 1)])
+                await self.db.vaccinations.create_index([("administration_date", -1)])
+                logger.info("MongoDB indexes on users, families, members, and vaccinations ensured.")
             except Exception as e:
                 logger.warning(f"Could not create MongoDB indexes: {e}")
 

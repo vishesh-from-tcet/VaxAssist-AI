@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom';
+import 'fake-indexeddb/auto';
 
 const localStorageMock = (() => {
   let store: Record<string, string> = {};
@@ -21,4 +22,6 @@ if (typeof window !== 'undefined') {
     value: localStorageMock,
     writable: true,
   });
+
+  window.HTMLElement.prototype.scrollIntoView = function() {};
 }

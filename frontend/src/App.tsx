@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
+import { SyncProvider } from './context/SyncContext';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { Layout } from './components/Layout';
 import { LandingPage } from './pages/LandingPage';
@@ -8,6 +9,7 @@ import { LoginPage } from './pages/LoginPage';
 import { RegisterPage } from './pages/RegisterPage';
 import { DashboardPage } from './pages/DashboardPage';
 import { FamilyPage } from './pages/FamilyPage';
+import { MemberProfilePage } from './pages/MemberProfilePage';
 import { VaccinationsPage } from './pages/VaccinationsPage';
 import { SchedulePage } from './pages/SchedulePage';
 import { RemindersPage } from './pages/RemindersPage';
@@ -19,7 +21,8 @@ import { SettingsPage } from './pages/SettingsPage';
 export const App: React.FC = () => {
   return (
     <AuthProvider>
-      <BrowserRouter>
+      <SyncProvider>
+        <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
             {/* Public Routes */}
@@ -31,6 +34,7 @@ export const App: React.FC = () => {
             <Route element={<ProtectedRoute />}>
               <Route path="dashboard" element={<DashboardPage />} />
               <Route path="family" element={<FamilyPage />} />
+              <Route path="family/members/:memberId" element={<MemberProfilePage />} />
               <Route path="vaccinations" element={<VaccinationsPage />} />
               <Route path="schedule" element={<SchedulePage />} />
               <Route path="reminders" element={<RemindersPage />} />
@@ -42,6 +46,7 @@ export const App: React.FC = () => {
           </Route>
         </Routes>
       </BrowserRouter>
+      </SyncProvider>
     </AuthProvider>
   );
 };

@@ -101,7 +101,12 @@ export const Navigation: React.FC<{ onCloseMobile?: () => void }> = ({ onCloseMo
               }
             >
               <Icon className="w-4 h-4 mr-3 shrink-0" />
-              <span>{item.label}</span>
+              <span className="flex-1">{item.label}</span>
+              {item.path === '/reminders' && (
+                <span className="ml-auto px-1.5 py-0.5 text-[10px] font-bold bg-purple-500/30 text-purple-300 rounded-full">
+                  Alerts
+                </span>
+              )}
             </NavLink>
           );
         })}

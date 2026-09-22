@@ -7,6 +7,11 @@ from app.core.config import settings
 from app.db.mongo import mongo_db
 from app.api.health import router as health_router
 from app.api.v1.auth import router as auth_router
+from app.api.v1.families import router as families_router
+from app.api.v1.vaccinations import router as vaccinations_router
+from app.api.v1.schedule import router as schedule_router
+from app.api.v1.knowledge import router as knowledge_router
+from app.api.v1.ai_chat import router as ai_chat_router
 
 logging.basicConfig(
     level=logging.INFO if settings.DEBUG else logging.WARNING,
@@ -46,6 +51,16 @@ app.include_router(health_router)
 app.include_router(health_router, prefix="/api/v1")
 app.include_router(auth_router, prefix="/api/v1")
 app.include_router(auth_router)
+app.include_router(families_router, prefix="/api/v1")
+app.include_router(families_router)
+app.include_router(vaccinations_router, prefix="/api/v1")
+app.include_router(vaccinations_router)
+app.include_router(schedule_router, prefix="/api/v1")
+app.include_router(schedule_router)
+app.include_router(knowledge_router, prefix="/api/v1")
+app.include_router(knowledge_router)
+app.include_router(ai_chat_router, prefix="/api/v1")
+app.include_router(ai_chat_router)
 
 
 
